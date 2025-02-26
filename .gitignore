@@ -1,0 +1,13 @@
+*.sln
+*.obj
+*.exe
+*.pdb
+*.filters
+*.user
+*.log
+*.recipe
+*.txt
+*.ibd
+*.tlog
+*.lastbuildstate
+*.ilk
