@@ -11,3 +11,10 @@
 *.tlog
 *.lastbuildstate
 *.ilk
+*.vsidx
+*.suo
+*.db
+*.ipch
+*.json
+*.vcxproj
+*.idb
