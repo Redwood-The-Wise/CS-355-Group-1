@@ -19,3 +19,4 @@
 *.vcxproj
 *.idb
 *.opendb
+.vs
