@@ -36,6 +36,7 @@ struct EnemyStats
 {
 	int health;
 	int damage;
+	int defense; //added defense
 	char mapChar;
 	string desc;
 	string name;
