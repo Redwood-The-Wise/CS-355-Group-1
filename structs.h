@@ -1,3 +1,21 @@
+// *************************************************************************
+// Group: Group 1
+// Course: CS-355-01
+// Assignment: Project 4
+// Due Date: 3/16/2025
+// Description: 
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Logan Noles
+// Date: 3/11/2025
+// Description: Added string name to the EnemyStats struct and added 
+// #include <string> and using namespace std because I was getting some weird errors.
+// *************************************************************************
+#include <string>
+using namespace std;
 struct Rule
 {
 	int beginRm;
@@ -20,6 +38,7 @@ struct EnemyStats
 	int damage;
 	char mapChar;
 	string desc;
+	string name;
 };
 // *************************************************************************
 // Equip is a new struct to handle the stats stored by the Equipment class
