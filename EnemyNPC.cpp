@@ -92,4 +92,5 @@ void EnemyNPC::setStats(EnemyStats* s)
 	stats->mapChar = s->mapChar;
 	stats->desc = s->desc;
 	stats->name = s->name;
+	stats->defense = s.defense;
 }
