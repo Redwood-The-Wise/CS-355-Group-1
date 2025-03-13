@@ -220,3 +220,22 @@ void HPSPPlayer::use(MapV2* mapptr)
 		}
 	}
 }
+
+// *************************************************************************
+// This returns a pointer to the hit points so we can modifity it when a player gets attacked
+// Incoming Data: none
+// Outgoing Data: hitpoints
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Logan Noles
+// Date: 3/13/2025
+// Description: created this function
+// I made this if our combat system works the way it does.
+// *************************************************************************
+int* HPSPPlayer::getPoints()
+{
+	return &hitPoints;
+}
