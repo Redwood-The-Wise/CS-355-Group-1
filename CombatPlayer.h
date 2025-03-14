@@ -44,6 +44,7 @@
 class CombatPlayer : public HPSPPlayer
 {
 private:
+	int armor;
 	Stats* stats;
 	void initiateCombat(EnemyNPC* enemy);
 	vector<Equipment*> equipment;
@@ -53,4 +54,5 @@ public:
 	CombatPlayer();
 	void attack(EnemyNPC* enemy);
 	void equip();
+	Stats* getStats();
 };

@@ -102,3 +102,21 @@ void CombatPlayer::setStats(Stats* s)
 	stats->name = s->name;
 	stats->defense = s->defense;
 }
+
+// *************************************************************************
+// Method to set the stats of the Combat player from our file.
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Logan Noles
+// Date: 3/14/2025
+// Description: Created the method to set user stats.
+// *************************************************************************
+Stats* CombatPlayer::getStats()
+{
+    return stats;
+}
