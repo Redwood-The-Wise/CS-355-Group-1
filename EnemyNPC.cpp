@@ -48,7 +48,7 @@ EnemyNPC::EnemyNPC(){}
 // Date: 3/13/2025
 // Description: Created the method to return the stats of the enemy.
 // *************************************************************************
-EnemyStats* EnemyNPC::getStats()
+Stats* EnemyNPC::getStats()
 {
 	return stats;
 }
@@ -66,11 +66,18 @@ EnemyStats* EnemyNPC::getStats()
 // Date: 3/13/2025
 // Description: Created the method outline and added the ability to deal damage to the player.
 // *************************************************************************
-void EnemyNPC::defend(CombatPlayer* obj)
+void EnemyNPC::attack(CombatPlayer* obj)
 {
-	//for balance reasons, the enemy deals damage equal to its damage minus the player's defense.
-	obj->getPoints()[0] -= stats->damage - stats->defense;
-}
+	//for balance reasons, we check if our armor is greater than our damage.
+	//if it is, we deal 1 damage to the player, else we deal the difference between our damage and armor.
+	if (stats->defense > stats->damage)
+	{
+		obj->getStats()->health -= 1;
+	}
+	else
+	{
+		obj->getStats()->health -= stats->damage - stats->defense;
+	}
 
 // *************************************************************************
 // Method to set the stats of the enemy from our file.
@@ -82,7 +89,7 @@ void EnemyNPC::defend(CombatPlayer* obj)
 // *************************************************************************
 // *************************************************************************
 // Name: Logan Noles
-// Date: 3/11/2025
+// Date: 3/14/2025
 // Description: Created the method to set enemy stats.
 // *************************************************************************
 void EnemyNPC::setStats(Stats* s)

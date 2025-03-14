@@ -32,7 +32,7 @@ private:
 	Stats* stats;
 public:
 	EnemyNPC();
-	EnemyStats* getStats();
+	Stats* getStats();
 	void attack(CombatPlayer* obj);
 	void setStats(Stats* s);
 };
