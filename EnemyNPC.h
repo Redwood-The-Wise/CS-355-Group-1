@@ -3,7 +3,7 @@
 // Course: CS-355-01
 // Assignment: Project 4
 // Due Date: 3/16/2025
-// Description: 
+// Description:
 // *************************************************************************
 // *************************************************************************
 // Edit Log
@@ -21,7 +21,7 @@
 #endif
 
 #ifndef COMBATPLAYER_H
-	#define COMBATPLAYER_H	
+	#define COMBATPLAYER_H
 	#include "CombatPlayer.h"
 #endif // !COMBATPLAYER_H
 
@@ -29,10 +29,10 @@
 class EnemyNPC
 {
 private:
-	EnemyStats* stats;
+	Stats* stats;
 public:
 	EnemyNPC();
 	EnemyStats* getStats();
 	void attack(CombatPlayer* obj);
-	void setStats(EnemyStats* s);
+	void setStats(Stats* s);
 };

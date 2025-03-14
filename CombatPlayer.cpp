@@ -3,7 +3,7 @@
 // Course: CS-355-01
 // Assignment: Project 4
 // Due Date: 3/16/2025
-// Description: 
+// Description:
 // *************************************************************************
 // *************************************************************************
 // Edit Log
@@ -21,7 +21,7 @@
 
 CombatPlayer::CombatPlayer()
 {
-	
+
 }
 // *************************************************************************
 // attack is a public method method to deal with the attacks.
@@ -70,12 +70,35 @@ void CombatPlayer::initiateCombat(EnemyNPC* enemy)
 {
 	//for balance reasons, we check if our armor is greater than our damage.
 	//if it is, we deal 1 damage to the enemy, else we deal the difference between our damage and armor.
-	if (armor > damage)
+	if (stats->defense > stats->damage)
 	{
 		enemy->getStats()->health -= 1;
 	}
 	else
 	{
-		enemy->getStats()->health -= damage - armor;
+		enemy->getStats()->health -= stats->damage - stats->defense;
 	}
+}
+
+// *************************************************************************
+// Method to set the stats of the enemy from our file.
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Logan Noles
+// Date: 3/11/2025
+// Description: Created the method to set user stats.
+// *************************************************************************
+void CombatPlayer::setStats(Stats* s)
+{
+	stats->health = s->health;
+	stats->damage = s->damage;
+	stats->mapChar = s->mapChar;
+	stats->desc = s->desc;
+	stats->name = s->name;
+	stats->defense = s->defense;
 }
