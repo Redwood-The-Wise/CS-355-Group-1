@@ -1,0 +1,97 @@
+% Interactive Fiction Document Format V4: By Group 1
+% Group1: Nick Germann, Logan Noles, Daniel Puckett, Connor Reed
+% Assignment: Project 4
+% Date: 03/16/2025
+% Description: This is the test file for parsing and practicing the basic 
+%     game mechanics. Has all main items and an enemy for testing combat.
+% Title: Link is my name, Zelda is my game.
+
+<game>
+	<ptype>combat</ptype>
+	% Area 1
+	<area>
+		<desc>Begining room</desc>
+		<feats>0,0</feats>
+		<map>#####U#####</map>
+		<map>#........i#</map>
+		<map>#.........#</map>
+		<map>#....*....#</map>
+		<map>###########</map>
+		<item>
+			<equiptment>
+				<name>Wooden Sword</name>
+				<desc>As Buzz once said, It's a child's play thing!</desc>
+				<star>1</star>
+				<code>i</code>
+				<stat>1,3</stats>
+				<actar>-1</stats>
+				<actmess>Plus 3 attack, plus 1 defense<actmess>
+			</equiptment>
+		</item>
+	</area>
+
+	% Area 2
+	<area>
+		<desc>A long dark halway, dimly lit.</desc>
+		<feats>0,0</feats>
+		<map>##U##</map>
+		<map>##.##</map>
+		<map>##.##</map>
+		<map>##.##</map>
+		<map>##.##</map>
+		<map>##..R</map>
+		<map>##.##</map>
+		<map>##.##</map>
+		<map>L..##</map>
+		<map>##.##</map>
+		<map>##*##</map>
+		<map>##.##</map>
+		<map>##D##</map>
+	</area>
+
+	% Area 3 first fight room
+	<area>
+		<desc>A room lit with torches. A precarious gargoyle pirched in front of potion</desc>
+		<feats>0,0</feats>
+		<map>##########</map>
+		<map>#i.E.....#</map>
+		<map>####.....#</map>
+		<map>#.......*R</map>
+		<map>#i.......#</map>
+		<map>##########</map>
+		<item>
+			<equiptment>
+				<name>Wooden Shield</name>
+				<desc>light weight but seems like it can take a hit</desc>
+				<star>3</star>
+				<code>s</code>
+				<stat>3,1</stat>
+				<actar>-1</actar>
+				<actmess>thunk</actmess>
+			</equiptment>
+		</item>
+		<item>
+			<consumable>
+				<name>Health Potion</name>
+				<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
+				<star>3</star>
+				<code>p</code>
+				<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
+				<actar>-1</actar>
+				<effect>1,50,1</effect>
+			</consumable>
+		</item>
+		<enemy>
+			<name>Gargoyle</name>
+			%desc has multiple characters like commas and colon for debug, not needed
+			<desc>Gargoyle sitting upon a column. There is a plaque with "Bronyx 1994, Dis-knee".</desc>
+			<code>g</code>
+			<stats>12,3,20</stats>
+		</enemy>
+	</area>
+	<links>
+		<linkset>2,-1,-1,-1</linkset> %-1 references invalid no link. Change this to same room, or as needed
+		<linkset>-1,1,3,-1</linkset>
+		<linkset>-1,-1,-1,2</linkset>
+	</link>
+</game>	
