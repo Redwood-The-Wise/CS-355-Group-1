@@ -13,6 +13,14 @@
 // Date Edited: 3/7/2025
 // Edited Notes: Created the CombatPlayer.h file ready for implementation
 // *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Logan Noles
+// Date Edited: 3/14/2025
+// Edited Notes: changed attack to accept a pointer to an EnemyNPC
+// *************************************************************************
 
 #ifndef H_PLAYER
 	#define H_HPSPPLAYER
@@ -23,16 +31,22 @@
 	#include "Equipment.h"
 #endif
 
+#ifndef H_ENEMYNPC
+	#define H_ENEMYNPC
+	#include "EnemyNPC.h"
+#endif
+
 class CombatPlayer : public HPSPPlayer
 {
 private:
 	int armor;
 	int damage;
+	void initiateCombat(EnemyNPC* enemy);
 	vector<Equipment*> equipment;
 
 
 public:
 	CombatPlayer();
-	void attack();
+	void attack(EnemyNPC* enemy);
 	void equip();
 };
