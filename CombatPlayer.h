@@ -2,7 +2,7 @@
 // Group: Group 1
 // Assignment: Project 4
 // Date: 3/16/2025
-// Description: CombatPlayer extends HPSPPlayer to add combat mechanics 
+// Description: CombatPlayer extends HPSPPlayer to add combat mechanics
 // *************************************************************************
 
 // *************************************************************************
@@ -36,11 +36,16 @@
 	#include "EnemyNPC.h"
 #endif
 
+#ifndef H_STRUCTS
+	#define H_STRUCTS
+	#include "structs.h"
+#endif
+
 class CombatPlayer : public HPSPPlayer
 {
 private:
 	int armor;
-	int damage;
+	Stats* stats;
 	void initiateCombat(EnemyNPC* enemy);
 	vector<Equipment*> equipment;
 

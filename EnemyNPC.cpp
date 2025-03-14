@@ -3,7 +3,7 @@
 // Course: CS-355-01
 // Assignment: Project 4
 // Due Date: 3/16/2025
-// Description: 
+// Description:
 // *************************************************************************
 // *************************************************************************
 // Edit Log
@@ -85,7 +85,7 @@ void EnemyNPC::defend(CombatPlayer* obj)
 // Date: 3/11/2025
 // Description: Created the method to set enemy stats.
 // *************************************************************************
-void EnemyNPC::setStats(EnemyStats* s)
+void EnemyNPC::setStats(Stats* s)
 {
 	stats->health = s->health;
 	stats->damage = s->damage;

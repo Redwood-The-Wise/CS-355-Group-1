@@ -3,7 +3,7 @@
 // Course: CS-355-01
 // Assignment: Project 4
 // Due Date: 3/16/2025
-// Description: 
+// Description:
 // *************************************************************************
 // *************************************************************************
 // Edit Log
@@ -11,7 +11,7 @@
 // *************************************************************************
 // Name: Logan Noles
 // Date: 3/11/2025
-// Description: Added string name to the EnemyStats struct and added 
+// Description: Added string name to the EnemyStats struct and added
 // #include <string> and using namespace std because I was getting some weird errors.
 // *************************************************************************
 #include <string>
@@ -40,7 +40,7 @@ struct Effect
 // Date: 3/13/2025
 // Description: added defense and name to the stats struct
 // *************************************************************************
-struct EnemyStats
+struct Stats
 {
 	int health;
 	int damage;
