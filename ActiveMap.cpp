@@ -162,9 +162,16 @@ void ActiveMap::updatePlayerPos(char dir)
 // Date: 3/7/2025
 // Description: Created the method to store the input into the vector
 // *************************************************************************
+// *************************************************************************
+// Name: Nick Germann
+// Date: 3/14/2025
+// Description: added more invalid moves for enemy characters.
+// *************************************************************************
+
 bool ActiveMap::checkValidMove()
 {
-	if (userMap[playerPos[1]][playerPos[0]] == '#')
+	if (userMap[playerPos[1]][playerPos[0]] == '#' || userMap[playerPos[1]][playerPos[0]] == 'E' 
+		|| userMap[playerPos[1]][playerPos[0]] == 'B')
 	{
 		return false;
 	}
