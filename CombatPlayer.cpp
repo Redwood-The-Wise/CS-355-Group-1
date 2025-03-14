@@ -120,3 +120,11 @@ Stats* CombatPlayer::getStats()
 {
     return stats;
 }
+
+void CombatPlayer::reportStats()
+{
+    cout << "Player stats:\n"
+         << "\tHit Points:" << stats->health
+         <<  "\n\tDamage:" << stats->damage
+         << "\n\tDefense" << stats->defense << endl;
+}
