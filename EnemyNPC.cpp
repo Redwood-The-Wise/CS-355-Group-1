@@ -64,12 +64,12 @@ EnemyStats* EnemyNPC::getStats()
 // *************************************************************************
 // Name: Logan Noles
 // Date: 3/13/2025
-// Description: Created the method outline. I'm not sure how we want this to 
-// interact with the player.
+// Description: Created the method outline and added the ability to deal damage to the player.
 // *************************************************************************
-void EnemyNPC::attack(CombatPlayer* obj)
+void EnemyNPC::defend(CombatPlayer* obj)
 {
-	obj->getPoints()[0] -= stats->damage;
+	//for balance reasons, the enemy deals damage equal to its damage minus the player's defense.
+	obj->getPoints()[0] -= stats->damage - stats->defense;
 }
 
 // *************************************************************************
@@ -92,5 +92,5 @@ void EnemyNPC::setStats(EnemyStats* s)
 	stats->mapChar = s->mapChar;
 	stats->desc = s->desc;
 	stats->name = s->name;
-	stats->defense = s.defense;
+	stats->defense = s->defense;
 }
