@@ -24,5 +24,4 @@ class HPSPPlayer: public Player
 		void reportStats();
 		void consume(MapV2* mapptr);
 		void use(MapV2* mapptr);
-		int* getPoints();
 };

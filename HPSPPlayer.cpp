@@ -3,7 +3,7 @@
 // Course: CS-355
 // Assignment: Project 3
 // Date: 2/23/2025
-// Description: This is the implementation of the Hit Point Sanity Point 
+// Description: This is the implementation of the Hit Point Sanity Point
 //	Player class that inherits from the Player class
 // *************************************************************************
 
@@ -75,15 +75,15 @@ void HPSPPlayer::consume(MapV2* mapptr)
 	Item* item;
 	string itemName;
 	bool found = false;
-	
+
 	cout << "What item to consume? " << endl;
 	getline(cin, itemName);
-	
-	if (tempNode == NULL) 
+
+	if (tempNode == NULL)
 	{
 		cout << "There are no items in your inventory. " << endl;
 	}
-	
+
 	while(!found && tempNode != NULL)
 	{
 		if (tempNode->info->getName() == itemName)
@@ -93,34 +93,34 @@ void HPSPPlayer::consume(MapV2* mapptr)
 		}
 		tempNode = tempNode->link;
 	}
-	
+
 	if (!found)
 	{
 		cout << "No Item with that name in your inventory." << endl;
 		return;
 	}
-	
+
 	if (item->getType() != "consume")
 	{
 		cout << itemName << " cannot be consumed." << endl;
 		return;
 	}
-	
+
 	cout << item->getActiveArea() << endl;
-	
+
 	int itemArea = item->getActiveArea();
 	int mapArea = mapptr->reverseLookUp(currentLocation);
-	if (item->getActiveArea() != 0 
+	if (item->getActiveArea() != 0
 		&& itemArea != mapArea)
 	{
-		cout << itemName << " cannot be consumed in this location." << endl; 
+		cout << itemName << " cannot be consumed in this location." << endl;
 		return;
 	}
-	
+
 	cout << item->getActiveMessage() << endl;
-	
+
 	vector<Effect*> effects = item->getItemConsumeEffects();
-	
+
 	for (int i = 0; i < effects.size(); i++)
 	{
 		Effect* effect = effects[i];
@@ -154,15 +154,15 @@ void HPSPPlayer::use(MapV2* mapptr)
 	Item* item;
 	string itemName;
 	bool found = false;
-	
+
 	cout << "What item to use? " << endl;
 	getline(cin, itemName);
-	
-	if (tempNode == NULL) 
+
+	if (tempNode == NULL)
 	{
 		cout << "There are no items in your inventory. " << endl;
 	}
-	
+
 	while(!found && tempNode != NULL)
 	{
 		if (tempNode->info->getName() == itemName)
@@ -177,28 +177,28 @@ void HPSPPlayer::use(MapV2* mapptr)
 		cout << "No Item with that name in your inventory." << endl;
 		return;
 	}
-	
+
 	cout << item->getType() << endl;
 	if (item->getType() != "use")
 	{
 		cout << itemName << " cannot be used." << endl;
 		return;
 	}
-	
+
 	cout << item->getActiveArea() << endl;
 	int itemArea = item->getActiveArea();
 	int mapArea = mapptr->reverseLookUp(currentLocation);
-	if (item->getActiveArea() != 0 
+	if (item->getActiveArea() != 0
 		&& itemArea != mapArea)
 	{
-		cout << itemName << " cannot be used in this location." << endl; 
+		cout << itemName << " cannot be used in this location." << endl;
 		return;
 	}
-	
+
 	cout << item->getActiveMessage() << endl;
-	
+
 	vector<Rule*> rules = item->getItemUseRules();
-	
+
 	for (int i = 0; i < rules.size(); i++)
 	{
 		Rule* rule = rules[i];
@@ -219,23 +219,4 @@ void HPSPPlayer::use(MapV2* mapptr)
 			mapptr->updateLinks(rule->beginRm, rule->destRm, 'r');
 		}
 	}
-}
-
-// *************************************************************************
-// This returns a pointer to the hit points so we can modifity it when a player gets attacked
-// Incoming Data: none
-// Outgoing Data: hitpoints
-// *************************************************************************
-// *************************************************************************
-// Edit Log
-// *************************************************************************
-// *************************************************************************
-// Name: Logan Noles
-// Date: 3/13/2025
-// Description: created this function
-// I made this if our combat system works the way it does.
-// *************************************************************************
-int* HPSPPlayer::getPoints()
-{
-	return &hitPoints;
 }

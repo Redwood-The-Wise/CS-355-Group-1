@@ -55,4 +55,5 @@ public:
 	void attack(EnemyNPC* enemy);
 	void equip();
 	Stats* getStats();
+	void reportStats();
 };
