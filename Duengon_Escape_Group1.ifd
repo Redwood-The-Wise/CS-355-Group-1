@@ -211,27 +211,29 @@
 % *************************************************************
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Wooden Sword</name>
 			<desc>As Buzz once said, It's a child's play thing!</desc>
 			<star>1</star>
 			<code>s</code>
+			<stat>0,1</stat>
 			<stat>1,3</stats>
-			<actar>-1</stats>
+			<actar>0</stats>
 			<actmess>Plus 3 attack, plus 1 defense<actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Wooden Shield</name>
 			<desc>light weight but seems like it can take a hit</desc>
 			<star>3</star>
 			<code>s</code>
-			<stat>3,1</stat>
-			<actar>-1</actar>
+			<stat>0,3</stat>
+			<stat>1,1</stat>
+			<actar>0</actar>
 			<actmess>thunk</actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 	<item>
@@ -241,20 +243,20 @@
 			<star>3</star>
 			<code>p</code>
 			<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
-			<actar>-1</actar>
+			<actar>0</actar>
 			<effect>1,50,1</effect>
 		</consumable>
 	</item>
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Bronze Sword</name>
 			<desc>Shimmers of dark gold, a much better choice than the toy.</desc>
 			<star>4</star>
 			<stat>2,7</stat>
-			<actar>-1</actar>
+			<actar>0</actar>
 			<actmess>swoosh</actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 	<item>
@@ -264,7 +266,7 @@
 			<star>5</star>
 			<code>p</code>
 			<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
-			<actar>-1</actar>
+			<actar>0</actar>
 			<effect>1,100,1</effect>
 		</consumable>
 	</item>
@@ -288,57 +290,61 @@
 			<star>5</star>
 			<code>r</code>
 			<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
-			<actar>-1</actar>
+			<actar>0</actar>
 			<effect>1,100,1</effect>
 		</consumable>
 	</item>
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Golden Steel Sword</name>
 			<desc>A beautiful steel sword with a golden hilt. It hums with magic.</desc>
 			<star>6</star>
 			<code>a</code>
-			<stat>3,25</stat>
-			<actar>-1</actar>
+			<stat>0,3</stat>
+			<stat>1,25</stat>
+			<actar>0</actar>
 			<actmess>druhhvvvvvv</actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Golden Metalic Shield</name>
 			<desc>A beautiful metalic shield with a golden trimed edges. It hums with magic.</desc>
 			<star>6</star>
 			<code>d</code>
-			<stat>25,3</stat>
-			<actar>-1</actar>
+			<stat>0,25</stat>
+			<stat>1,3</stat>
+			<actar>0</actar>
 			<actmess>druhhvvvvvv</actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Golden Steel Sword</name>
 			<desc>A beautiful steel sword with a golden hilt. It hums with magic.</desc>
 			<star>6</star>
 			<code>a</code>
-			<stat>3,25</stat>
-			<actar>-1</actar>
+			<stat>0,3</stat>
+			<stat>1,25</stat>
+			<actar>0</actar>
 			<actmess>druhhvvvvvv</actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 	<item>
-		<equiptment>
+		<equipment>
 			<name>Golden Metalic Shield</name>
 			<desc>A beautiful metalic shield with a golden trimed edges. It hums with magic.</desc>
 			<star>6</star>
 			<code>d</code>
-			<stat>25,3</stat>
-			<actar>-1</actar>
+			<stat>0,25</stat>
+			<stat>1,3</stat>
+			<actar>0</actar>
 			<actmess>druhhvvvvvv</actmess>
-		</equiptment>
+		</equipment>
 	</item>
 
 </game>	
