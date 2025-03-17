@@ -2,14 +2,31 @@
 % Group1: Nick Germann, Logan Noles, Daniel Puckett, Connor Reed
 % Assignment: Project 4
 % Date: 03/16/2025
-% Description: This is the test file for parsing and practicing the basic 
-%     game mechanics. Has all main items and an enemy for testing combat.
-% Title: Link is my name, Zelda is my game.
+% Description: This is the game file for Group 1 project. It includes a game with
+% 		maps, items, equiptment, combat, and way to win.
+% Title: Dungeon Escape!
 
 <game>
+% *************************************************************
+% Name: Nick Germann
+% Date: 03/13/2025
+% Time: 1600
+% Task/Edit: Created player type.
+% *************************************************************
+
 	<ptype>combat</ptype>
+
+% *************************************************************
+% Name: Nick Germann
+% Date: 03/13/2025
+% Time: 1730
+% Task/Edit: Created all the maps and the item placement.
+% 		Also balanced game play mathematically to ensure game
+%		play is played through correctly.
+% *************************************************************
+
 	% Area 1
-	<area>
+	<area> % Area 1 The starting room.
 		<desc>Begining room</desc>
 		<feats>0,0</feats>
 		<map>#####U#####</map>
@@ -17,22 +34,11 @@
 		<map>#.........#</map>
 		<map>#....*....#</map>
 		<map>###########</map>
-		<item>
-			<equiptment>
-				<name>Wooden Sword</name>
-				<desc>As Buzz once said, It's a child's play thing!</desc>
-				<star>1</star>
-				<code>s</code>
-				<stat>1,3</stats>
-				<actar>-1</stats>
-				<actmess>Plus 3 attack, plus 1 defense<actmess>
-			</equiptment>
-		</item>
 	</area>
 
 	% Area 2
 	<area>
-		<desc>A long dark halway, dimly lit.</desc>
+		<desc>A long dark hallway, dimly lit.</desc>
 		<feats>0,0</feats>
 		<map>##U##</map>
 		<map>##.##</map>
@@ -51,7 +57,7 @@
 
 	% Area 3 first fight room
 	<area>
-		<desc>A room lit with torches. A precarious gargoyle pirched in front of potion</desc>
+		<desc>A room lit with torches. A precarious gargoyle perched in front of potion.</desc>
 		<feats>0,0</feats>
 		<map>##########</map>
 		<map>#s.E.....#</map>
@@ -59,32 +65,9 @@
 		<map>#.......*R</map>
 		<map>#p.......#</map>
 		<map>##########</map>
-		<item>
-			<equiptment>
-				<name>Wooden Shield</name>
-				<desc>light weight but seems like it can take a hit</desc>
-				<star>3</star>
-				<code>s</code>
-				<stat>3,1</stat>
-				<actar>-1</actar>
-				<actmess>thunk</actmess>
-			</equiptment>
-		</item>
-		<item>
-			<consumable>
-				<name>Health Potion</name>
-				<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
-				<star>3</star>
-				<code>p</code>
-				<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
-				<actar>-1</actar>
-				<effect>1,50,1</effect>
-			</consumable>
-		</item>
 		<enemy>
 			<name>Gargoyle</name>
-			%desc has multiple characters like commas and colon for debug, not needed
-			<desc>Gargoyle sitting upon a column. There is a plaque with "Bronyx 1994, Dis-knee".</desc>
+			<desc>Gargoyle sitting upon a column. There is a plaque with "Bronyx: 1994, Dis-knee".</desc>
 			<code>g</code>
 			<stats>12,3,20</stats>
 		</enemy>
@@ -100,16 +83,6 @@
 		<map>#######E##</map>
 		<map>L*.......#</map>
 		<map>##########</map>
-		<item>
-			<equiptment>
-				<name>Bronze Sword</name>
-				<desc>Shimmers of dark gold, a much better choice than the toy.</desc>
-				<star>4</star>
-				<stat>2,7</stat>
-				<actar>-1</actar>
-				<actmess>swoosh</actmess>
-			</equiptment>
-		</item>
 		<enemy>
 			<name>Sleeping Dog</name>
 			<desc>You know what they say, let sleeping dogs lie. This one looks like is spawned from hell though.</desc>
@@ -129,39 +102,6 @@
 		<map>#.......................#</map>
 		<map>#...........*...........#</map>
 		<map>############D############</map>
-		<item>
-			<consumable>
-				<name>Large Health Potion</name>
-				<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
-				<star>5</star>
-				<code>p</code>
-				<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
-				<actar>-1</actar>
-				<effect>1,100,1</effect>
-			</consumable>
-		</item>
-		<item>
-			<use>
-				<name>Skeleton Key</name>
-				<desc>A skeleton key with a door right in front of it</desc>
-				<star>5</star>
-				<code>q</code>
-				<actmess>You turn the key and it unlocks the door.</actmess>
-				<actar>5</actar>
-				<rule>5,u,7</rule>
-			</use>
-		</item>
-		<item>
-			<consumable>
-				<name>Large Health Potion</name>
-				<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
-				<star>5</star>
-				<code>r</code>
-				<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
-				<actar>-1</actar>
-				<effect>1,100,1</effect>
-			</consumable>
-		</item>
 		<enemy>
 			<name>Shaking Pillar</name>
 			<desc>The pillar shakes and moans like a ghost in pain. Should you try to set it free?</desc>
@@ -194,28 +134,6 @@
 		<map>#.#........#</map>
 		<map>##.........#</map>
 		<map>############</map>
-		<item>
-			<equiptment>
-				<name>Golden Steel Sword</name>
-				<desc>A beautiful steel sword with a golden hilt. It hums with magic.</desc>
-				<star>6</star>
-				<code>a</code>
-				<stat>3,25</stat>
-				<actar>-1</actar>
-				<actmess>druhhvvvvvv</actmess>
-			</equiptment>
-		</item>
-		<item>
-			<equiptment>
-				<name>Golden Metalic Shield</name>
-				<desc>A beautiful metalic shield with a golden trimed edges. It hums with magic.</desc>
-				<star>6</star>
-				<code>d</code>
-				<stat>25,3</stat>
-				<actar>-1</actar>
-				<actmess>druhhvvvvvv</actmess>
-			</equiptment>
-		</item>
 		<enemy>
 			<name>Gigantic Orc</name>
 			<desc>This towering green brutish orc snarls. You stair it down, should you fight it?</desc>
@@ -246,7 +164,7 @@
 		<map>##########</map>
 		<enemy>
 			<name>Red and Gold Dragon</name>
-			<desc>A dragon over 20 times your size.  Its scales shimmer with bril;ance like you've never seen before.</desc>
+			<desc>A dragon over 20 times your size.  Its scales shimmer with brilance like you've never seen before.</desc>
 			<code>D</code>
 			<stats>35,20,150</stats>
 		</enemy>
@@ -263,6 +181,15 @@
 		<map>..............</map>
 		<map>..............</map>
 	</area>
+
+% *************************************************************
+% Name: Nick Germann
+% Date: 03/13/2025
+% Time: 1630
+% Task/Edit: Linksets were done with the map creation and were
+%		drawn out first.
+% *************************************************************
+
 	<links>
 		<linkset>2,1,1,1</linkset> %1 Starting room
 		<linkset>2,1,3,2</linkset> %2 Hallway
@@ -274,4 +201,152 @@
 		<linkset>8,8,5,9</linkset> %8 Main boss room
 		<linkset>9,9,8,9</linkset> %9 Open field
 	</link>
+
+% *************************************************************
+% Name: Nick Germann
+% Date: 03/16/2025
+% Time: 1000
+% Task/Edit: Finished implementing all items and confiming
+% 		all balance for the game.
+% *************************************************************
+
+	<item>
+		<equiptment>
+			<name>Wooden Sword</name>
+			<desc>As Buzz once said, It's a child's play thing!</desc>
+			<star>1</star>
+			<code>s</code>
+			<stat>1,3</stats>
+			<actar>-1</stats>
+			<actmess>Plus 3 attack, plus 1 defense<actmess>
+		</equiptment>
+	</item>
+
+	<item>
+		<equiptment>
+			<name>Wooden Shield</name>
+			<desc>light weight but seems like it can take a hit</desc>
+			<star>3</star>
+			<code>s</code>
+			<stat>3,1</stat>
+			<actar>-1</actar>
+			<actmess>thunk</actmess>
+		</equiptment>
+	</item>
+
+	<item>
+		<consumable>
+			<name>Health Potion</name>
+			<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
+			<star>3</star>
+			<code>p</code>
+			<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
+			<actar>-1</actar>
+			<effect>1,50,1</effect>
+		</consumable>
+	</item>
+
+	<item>
+		<equiptment>
+			<name>Bronze Sword</name>
+			<desc>Shimmers of dark gold, a much better choice than the toy.</desc>
+			<star>4</star>
+			<stat>2,7</stat>
+			<actar>-1</actar>
+			<actmess>swoosh</actmess>
+		</equiptment>
+	</item>
+
+	<item>
+		<consumable>
+			<name>Large Health Potion</name>
+			<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
+			<star>5</star>
+			<code>p</code>
+			<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
+			<actar>-1</actar>
+			<effect>1,100,1</effect>
+		</consumable>
+	</item>
+
+	<item>
+		<use>
+			<name>Skeleton Key</name>
+			<desc>A skeleton key with a door right in front of it</desc>
+			<star>5</star>
+			<code>q</code>
+			<actmess>You turn the key and it unlocks the door.</actmess>
+			<actar>5</actar>
+			<rule>5,u,7</rule>
+		</use>
+	</item>
+
+	<item>
+		<consumable>
+			<name>Large Health Potion</name>
+			<desc>Smell like a freshly cleaned dog. Do you really want to drink it?</desc>
+			<star>5</star>
+			<code>r</code>
+			<actmess>Taste like it smelled. Why do you know what dogs taste like.</actmess>
+			<actar>-1</actar>
+			<effect>1,100,1</effect>
+		</consumable>
+	</item>
+
+	<item>
+		<equiptment>
+			<name>Golden Steel Sword</name>
+			<desc>A beautiful steel sword with a golden hilt. It hums with magic.</desc>
+			<star>6</star>
+			<code>a</code>
+			<stat>3,25</stat>
+			<actar>-1</actar>
+			<actmess>druhhvvvvvv</actmess>
+		</equiptment>
+	</item>
+
+	<item>
+		<equiptment>
+			<name>Golden Metalic Shield</name>
+			<desc>A beautiful metalic shield with a golden trimed edges. It hums with magic.</desc>
+			<star>6</star>
+			<code>d</code>
+			<stat>25,3</stat>
+			<actar>-1</actar>
+			<actmess>druhhvvvvvv</actmess>
+		</equiptment>
+	</item>
+
+	<item>
+		<equiptment>
+			<name>Golden Steel Sword</name>
+			<desc>A beautiful steel sword with a golden hilt. It hums with magic.</desc>
+			<star>6</star>
+			<code>a</code>
+			<stat>3,25</stat>
+			<actar>-1</actar>
+			<actmess>druhhvvvvvv</actmess>
+		</equiptment>
+	</item>
+
+	<item>
+		<equiptment>
+			<name>Golden Metalic Shield</name>
+			<desc>A beautiful metalic shield with a golden trimed edges. It hums with magic.</desc>
+			<star>6</star>
+			<code>d</code>
+			<stat>25,3</stat>
+			<actar>-1</actar>
+			<actmess>druhhvvvvvv</actmess>
+		</equiptment>
+	</item>
+
 </game>	
+% Additional Edit Log
+% *************************************************************
+% Name: Nick Germann
+% Date: 03/16/2025
+% Time: 1830
+% Task/Edit: Moved Items out of area and into own section
+%	for correct parsing.
+% *************************************************************
