@@ -1,0 +1,45 @@
+Documentation, txt version.
+Interactive Fiction Document (IFD) Format
+Specification and Information
+V4
+Created by : Dr. Ray	;  V4: Nick Germann, Logan Noles, Daniel Puckett, Conner Reed
+	
+Version 4 Updates:
+-	Visual Map and Moveable Player
+o	Version 4 allows for the creation of a moveable player of any type.
+o	This character moves through an ASCII environment of a three vector
+-	True consumable items.
+o	Moved from two item separated list to three item separated vector.
+-	Combat System (hack and slash)
+o	Combat has now been enabled so that you can
+	Equip items.
+	Attack Enemies.
+	Use potions in and out of combat.
+All these changes can be widely implemented within the design parameters explained below.
+
+Updated Specifications for the IFD Format:
+	The Interactive Fiction Document (IFD) format is a mark-up style language (think HTML) for specifying interactive fiction games in a simple plain-text file. With such languages, meta-data “tags” are used to represent the meaning of text in the file. Tags have the following format: < tagname > is the “open” label of the tag (where “tagname” is the name of the tag) and </tagname > is the “close” label. Tags always come in label pairs (open and close label pairs): the first without the ‘/’ opens the tag and the second with the ‘/’ before the tagname closes the tag. All text (strings, values, or other nested tags) inside the tag label pairs are part of that tag’s information. When a tag’s open label is nested inside another tag, then it’s close label must also be inside that same tag, and vice versa.
+For IFD Version 2, representable interactive fiction games consist of any number of discrete game “areas” (rooms, zones, etc.) that are interconnected with one another via “links”. This structure represents the areas that a player can move around in, constituting the “map” or “world” of the game. Additionally, in-game interactive “items” are supported. Items have certain characteristics that are detailed by the language (see below), one of which is the area (by number) that they begin the game in.
+For IFD Version 3, it has items that that can be consumed but may be used multiple times. The HPSP player also has a very basic hit point system that does not include the different damage mitigators such as attack and defense stats for both players and NPCs.
+
+
+Tag Specification:
+Tags will be fully explained and organized by the tag leveling system.
+First Level:
+<game></game>: All other tags and information for the game must be nested between the <game> and </game> labels.
+Second Level:
+<ptype></ptype>: the ptype tag indicates the creation of a new player; the text inside the tag should list the player type; this is extensible, but the two provided types are “basic”, “hpsp”, NEW* “combat”.
+<area></area>: the area tag indicates the creation of a new area in the game; information about the area is nested within.
+<link></link>: this is the container tag for all the game’s linksets.
+<item></item>: the item tag indicates the creation of a new in-game item; any number of item tags can be present; information about the item is nested within; each item must be specified as a specific type, consumable, use, and NEW* equipment.
+Third Level: (each of these tags will now list their parent tags along side them.
+
+
+
+
+
+
+
+
+
+
