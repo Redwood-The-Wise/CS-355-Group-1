@@ -1,3 +1,5 @@
+#ifndef H_LINKDATA
+#define H_LINKDATA
 #include <iostream>
 
 using namespace std;
@@ -12,3 +14,4 @@ class LinkData{
 	private:
 		int digits[4];
 };
+#endif

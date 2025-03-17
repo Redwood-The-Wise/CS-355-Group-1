@@ -1,12 +1,10 @@
-#ifndef H_MAPV2
-#define H_MAPV2
-    #include "MapV2.h"
-#endif // H_MAPV2
-
-#ifndef H_PLAYER
-#define H_PLAYER
-    #include "Player.h"
-#endif // H_PLAYER
+#ifndef H_GAME
+#define H_GAME
+#include "MapV2.h"
+#include "Player.h"
+#include "HPSPPlayer.h"
+#include "BasicPlayer.h"
+#include "CombatPlayer.h"
 
 #ifndef H_BASICPLAYER
 	#define H_BASICPLAYER
@@ -29,3 +27,4 @@ class Game{
   		void play();
   		void resetGame();
 };
+#endif

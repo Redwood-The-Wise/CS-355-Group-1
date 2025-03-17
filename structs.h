@@ -14,6 +14,8 @@
 // Description: Added string name to the EnemyStats struct and added
 // #include <string> and using namespace std because I was getting some weird errors.
 // *************************************************************************
+#ifndef H_STRUCTS
+#define H_STRUCTS
 #include <string>
 using namespace std;
 struct Rule
@@ -54,7 +56,7 @@ struct Stats
 // *************************************************************************
 struct Equip
 {
-	int beginRm;
 	int rule;
 	int effect;
 };
+#endif

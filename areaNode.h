@@ -1,7 +1,6 @@
-#ifndef H_AREA
-#define H_AREA
-  #include "Area.h"
-#endif // H_AREA
+#ifndef AREANODE_H
+#define AREANODE_H
+#include "Area.h"
 
 struct areaNode
 {
@@ -11,3 +10,4 @@ struct areaNode
 	areaNode* l;
 	areaNode* r;
 };
+#endif

@@ -1,9 +1,6 @@
 #include <iostream>
 
-#ifndef H_MAP
-#define H_MAP
-	#include "Map.h"
- #endif //H_MAP
+#include "Map.h"
 
 Map::Map(){
    areacnt = 0;
@@ -71,6 +68,7 @@ void Map::buildMap(){
 void Map::makeArea(){
     string xstr;
     areaNode* tempNodePtr = new areaNode;
+	tempNodePtr->info.userMap = new ActiveMap();
 
     while(nextToken != "</area>"){
         if(nextToken == "<desc>"){
@@ -95,6 +93,12 @@ void Map::makeArea(){
             nextToken = parser.getNext();
             tempNodePtr->info.userMap->addRow(nextToken);
         }
+        else if (nextToken == "<enemy>")
+        {
+            parser.eatToken();
+			nextToken = parser.getNext();
+			tempNodePtr->info.permenantList.push_back(makeEnemy());
+        }
         else if(nextToken == "</desc>" || nextToken == "</feats>" || nextToken == "</map>") {
             //do nothing
         }
@@ -110,6 +114,7 @@ void Map::makeArea(){
 
     //add area to vector
     areasVec.push_back(tempNodePtr);
+    tempNodePtr->info.userMap->createObjectMap();
     tempNodePtr->info.userMap->createUserMap();
 } //end makeArea()
 
@@ -139,6 +144,7 @@ void Map::makeLinks(){
             //do nothing
         }
         else{
+			cout << nextToken << endl;
             cout<<"Parse Error Location 3"<<endl;
             ifderr = true;
             break;
@@ -217,4 +223,70 @@ ostream& operator<<(ostream& osObject, Map& map)
 		cout<<"\t r: Area #"<<map.reverseLookUp(map.areasVec[i]->r)<<endl;
 	}
 	return osObject;
+}
+
+// *************************************************************************
+// makeEnemy() - creates an EnemyNPC object from the IFDParser
+// Incoming Data: none
+// Outgoing Data: EnemyNPC* object
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Created the method to handle creating an enemy
+// *************************************************************************
+EnemyNPC* Map::makeEnemy()
+{
+    EnemyNPC* tempEnemy = new EnemyNPC;
+    string xstr;
+    Stats* tempStats = new Stats;
+    while (nextToken != "</enemy>")
+    {
+        if (nextToken == "<name>")
+        {
+            parser.eatToken();
+            nextToken = parser.getNext();
+            tempStats->name = nextToken;
+        }
+        else if (nextToken == "<desc>")
+        {
+            parser.eatToken();
+			nextToken = parser.getNext();
+			tempStats->desc = nextToken;
+		}
+		else if (nextToken == "<stats>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			tempStats->health = atoi(xstr.substr(0, xstr.find(',')).c_str());
+			xstr = xstr.substr(xstr.find(',') + 1);
+			tempStats->defense = atoi(xstr.substr(0, xstr.find(',')).c_str());
+			xstr = xstr.substr(xstr.find(',') + 1);
+			tempStats->damage = atoi(xstr.c_str());
+        }
+        else if (nextToken == "<code>")
+        {
+			parser.eatToken();
+			nextToken = parser.getNext();
+			tempStats->mapChar = nextToken[0];
+        }
+		else if (nextToken == "</name>" || nextToken == "</desc>" ||
+            nextToken == "</stats>" || nextToken == "</code>")
+		{
+			//do nothing
+		}
+		else
+		{
+			cout << "Parse Error Location 4" << endl;
+			ifderr = true;
+			break;
+		}
+		parser.eatToken();
+		nextToken = parser.getNext();
+    }
+	return tempEnemy;
 }

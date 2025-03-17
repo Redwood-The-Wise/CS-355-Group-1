@@ -6,11 +6,19 @@
 // Description: This is the definition file for the UseItem class that
 //	inherits from the Item class
 // *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the addEquipStats and getEquipInfo methods
+// *************************************************************************
 
-#ifndef H_ITEM
-	#define H_ITEM
-	#include "Item.h"
-#endif
+#ifndef H_USEITEM
+#define H_USEITEM
+
+#include "Item.h"
 
 class UseItem: public Item
 {
@@ -23,8 +31,12 @@ class UseItem: public Item
 		void setActiveArea(int i);
 		void addRule(Rule* rule);
 		void addEffect(Effect* effect);
+		void addEquipStat(Equip* equip);
 		string getActiveMessage();
 		int getActiveArea();
 		vector<Rule*> getItemUseRules();
 		vector<Effect*> getItemConsumeEffects();
+		vector<Equip*> getEquipmentInfo();
 };
+
+#endif

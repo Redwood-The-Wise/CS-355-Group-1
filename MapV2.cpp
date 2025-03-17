@@ -7,10 +7,7 @@
 //	methods.
 // *************************************************************************
 
-#ifndef H_MAPV2
-	#define H_MAPV2
-	#include "MapV2.h"
-#endif
+#include "MapV2.h"
 
 // *************************************************************************
 // This is the default no argument constructor for the MapV2 class. It also
@@ -45,20 +42,27 @@ void MapV2::makeItem()
 			nextToken = parser.getNext();
 			makeUseItem();
 		}
-		else if (nextToken == "<consume>")
+		else if (nextToken == "<consumable>")
 		{
 			parser.eatToken();
 			nextToken = parser.getNext();
 			makeConsumeItem();
 		}
+		else if (nextToken == "<equipment>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			makeEquipmentItem();
+		}
 		else if (nextToken == "</basic>" || nextToken == "</use>" ||
-			nextToken == "</consume>")
+			nextToken == "</consume>" || nextToken == "</equipment>")
 		{
 			// Do nothing
 		}
 		else 
 		{
 			cout<<"Parse Error Location 2"<<endl;
+			cout << nextToken << endl;
             ifderr = true;
             break;
 		}
@@ -165,6 +169,17 @@ void MapV2::makeUseItem()
 			tempRule->destRm = temp;
 			tempItem->addRule(tempRule);
 		}
+		else if (nextToken == "<code>")
+		{
+			parser.eatToken();
+			xstr = parser.getNext();
+			char temp = xstr[0];
+			tempItem->setItemChar(temp);
+		}
+		else
+		{
+			cout << "Error parsing in makeUseItem()" << endl;
+		}
 		
 		parser.eatToken();
 		nextToken = parser.getNext();
@@ -183,7 +198,7 @@ void MapV2::makeConsumeItem()
 	Item* tempItem = new ConsumeItem();
 	string xstr;
 	
-	while (nextToken != "</consume>")
+	while (nextToken != "</consumable>")
 	{
 		if (nextToken == "<name>")
 		{
@@ -226,9 +241,127 @@ void MapV2::makeConsumeItem()
 			effect->effectID = temp;
 			xstr = xstr.substr(xstr.find(',')+1, xstr.length() - 1);
 			parser.trim(xstr);
-			temp = atoi(xstr.c_str());
+			temp = atoi(xstr.substr(0, xstr.find(',')).c_str());
+			xstr = xstr.substr(xstr.find(',') + 1, xstr.length() - 1);
+			parser.trim(xstr);
 			effect->effectAmt = temp;
+			int numUses = atoi(xstr.c_str());
 			tempItem->addEffect(effect);
+			tempItem->setNumUses(numUses);
+		}
+		else if (nextToken == "<code>")
+		{
+			parser.eatToken();
+			xstr = parser.getNext();
+			char temp = xstr[0];
+			tempItem->setItemChar(temp);
+		}
+		else if (nextToken == "</name>" || nextToken == "</desc>" ||
+			nextToken == "</star>" || nextToken == "</actmess>" ||
+			nextToken == "</actar>" || nextToken == "</effect>" ||
+			nextToken == "</code>")
+		{
+			// do nothing
+		}
+		else
+		{
+			cout << "Error parsing in makeConsumeItem()" << endl;
+		}
+		parser.eatToken();
+		nextToken = parser.getNext();
+	}
+	items.push_back(tempItem);
+}
+
+// *************************************************************************
+// makeEquipmentItem creates an Equipment object then stores it into the
+//	item vector
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/15/2025
+// Description: Created the method to handle equipment items
+// *************************************************************************
+void MapV2::makeEquipmentItem()
+{
+	Item* tempItem = new Equipment();
+	string xstr;
+	while (nextToken != "</equipment>")
+	{
+		if (nextToken == "<name>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			tempItem->setName(xstr);
+		}
+		else if (nextToken == "<desc>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			tempItem->setDesc(xstr);
+		}
+		else if (nextToken == "<star>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			int temp = atoi(xstr.c_str());
+			tempItem->setSR(temp);
+		}
+		else if (nextToken == "<code>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			char temp = xstr[0];
+			tempItem->setItemChar(temp);
+		}
+		else if (nextToken == "<stat>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			int rule = atoi(xstr.substr(0, xstr.find(',')).c_str());
+			xstr = xstr.substr(xstr.find(',') + 1, xstr.length() - 1);
+			parser.trim(xstr);
+			int effect = atoi(xstr.c_str());
+			Equip* tempEquip = new Equip;
+			tempEquip->effect = effect;
+			tempEquip->rule = rule;
+			tempItem->addEquipStat(tempEquip);
+		}
+		else if (nextToken == "<actar>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			int temp = atoi(xstr.c_str());
+			tempItem->setActiveArea(temp);
+		}
+		else if (nextToken == "<actmess>")
+		{
+			parser.eatToken();
+			nextToken = parser.getNext();
+			xstr = nextToken;
+			tempItem->setActiveMessage(xstr);
+		}
+		else if (nextToken == "</name>" || nextToken == "</desc>" ||
+			nextToken == "</star>" || nextToken == "</code>" ||
+			nextToken == "</stat>" || nextToken == "</actar>" ||
+			nextToken == "</actmess>")
+		{
+			// do nothing
+		}
+		else
+		{
+			cout << "Error parsing in makeEquipmentItem()" << endl;
 		}
 		parser.eatToken();
 		nextToken = parser.getNext();
@@ -282,7 +415,7 @@ void MapV2::setPlayerType()
 {
 	while (nextToken != "</ptype>")
 	{
-		if (nextToken == "basic" || nextToken == "hpsp")
+		if (nextToken == "basic" || nextToken == "hpsp" || nextToken  == "combat")
 		{
 			playerType = nextToken;
 		}
@@ -303,9 +436,8 @@ void MapV2::buildMap()
 	parser.tokenIt();
 
     nextToken = parser.getNext();
-
     if(nextToken == "<game>"){
-        parser.eatToken();
+		parser.eatToken();
         nextToken = parser.getNext();
         while(nextToken != "</game>")
 		{
@@ -428,6 +560,7 @@ void MapV2::updateLinks(int x, int y, char c)
 //  designed to output all current rooms and items.
 // Incoming Data: ostream& os, MapV2& map
 // Outgoing Data: ostream& os
+// *************************************************************************
 ostream& operator<<(ostream& os, MapV2& map)
 {
 	int currentIndex = 0;

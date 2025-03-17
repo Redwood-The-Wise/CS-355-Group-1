@@ -1,7 +1,5 @@
-#ifndef H_GAME
-#define H_GAME
-  #include "Game.h"
-#endif // H_GAME
+
+#include "Game.h"
 
 using namespace std;
 

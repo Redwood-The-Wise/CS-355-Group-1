@@ -1,8 +1,6 @@
 #include <iostream>
-#ifndef H_AREA
-	#define H_AREA
-	#include "Area.h"
-#endif
+#include "Area.h"
+
 
 Area::Area()
 {
@@ -50,5 +48,19 @@ void Area::search()
 	{
 		ptr->info->displayName();
 		ptr = ptr->link;
+	}
+}
+
+// *************************************************************************
+// Iterates through all EnemyNPCs stored in the permanentList vector
+//  and displays the result
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+void Area::generateEnemies()
+{
+	for (int i = 0; i < permenantList.size(); i++)
+	{
+		enemies[i] = permenantList[i];
 	}
 }

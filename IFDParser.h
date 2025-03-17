@@ -1,3 +1,4 @@
+#ifndef H_IFDPARSER
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -21,3 +22,4 @@ class IFDParser{
 		string gameFile;
         vector<string> tokenVec;
 };
+#endif

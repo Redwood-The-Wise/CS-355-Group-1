@@ -1,22 +1,11 @@
-#ifndef H_ULL
-	#define H_ULL
-	#include "ull.h"
-#endif
+#ifndef H_PLAYER
+#define H_PLAYER
 
-#ifndef H_ITEM
-	#define H_ITEM
-	#include "Item.h"
-#endif
+#include "ull.h"
+#include "Item.h"
+#include "areaNode.h"
+#include "MapV2.h"
 
-#ifndef H_AREANODE
-	#define H_AREANODE
-	#include "areaNode.h"
-#endif
-
-#ifndef H_MAPV2
-	#define H_MAPV2
-	#include "MapV2.h"
-#endif
 
 class Player{
   public:
@@ -67,19 +56,29 @@ class Player{
 		}
 		else{
 			bool found = false;
+			cout << "Searching for item: " << n << endl;
 			while(temp != NULL && !found){
 				if(n == temp->info->getName()){
-					found = true;
-					//add to player list
-					items.insertLast(temp->info);
-					//delete from room list
-					currentLocation->info.items.deleteNode(temp->info);
+					if (currentLocation->info.userMap->checkValidItem(temp->info))
+					{
+
+						found = true;
+						//add to player list
+						items.insertLast(temp->info);
+						//delete from room list
+						currentLocation->info.userMap->deleteItem(temp->info->getItemChar());
+						currentLocation->info.items.deleteNode(temp->info);
+					}
+					else {
+						cout << "You can't take that item." << endl;
+						return;
+					}
 				}
 				else{
 					temp = temp->link;
 				}
 			}
-			if (found && currentLocation->info.userMap->checkValidItem(temp->info))
+			if (found)
 			{
 				cout<<"You have taken: "<<n<<endl;
 			}
@@ -108,6 +107,7 @@ class Player{
 					//add to room list
 					currentLocation->info.items.insertLast(temp->info);
 					//delete from player list
+					currentLocation->info.userMap->dropItem(temp->info->getItemChar());
 					items.deleteNode(temp->info);
 				}
 				else{
@@ -157,10 +157,15 @@ class Player{
 	virtual void reportStats() = 0;
 	virtual void consume(MapV2* mapptr) = 0;
 	virtual void use(MapV2* mapptr) = 0;
-
+	virtual void equip(MapV2* mapptr) = 0;
+	virtual void unequip() = 0;
+	virtual void attack() = 0;
+	virtual void isHit(int) = 0;
 
   protected:
 		areaNode* currentLocation;
 		areaNode* lastLocation;
 
 };
+
+#endif
