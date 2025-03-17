@@ -1,7 +1,8 @@
-#ifndef H_STRUCTS
-#define H_STRUCTS
-    #include "structs.h"
-#endif
+#ifndef H_ITEM
+#define H_ITEM
+
+
+#include "structs.h"
 
 #include <string>
 #include <iostream>
@@ -83,7 +84,22 @@ public:
         vector<Effect*> blank;
 		return blank;
 	}
+	virtual vector<Equip*> getEquipmentInfo() {
+		vector<Equip*> blank;
+		return blank;
+	}
+	virtual void addEquipStat(Equip* temp) {
+		cout << "DEBUG WARNING: Objects of the Item (basic items) class don't have equipment stats." << endl;
+	}
 
+	virtual void setNumUses(int n) {
+		cout << "DEBUG WARNING: Objects of the Item (basic items) class don't have a number of uses." << endl;
+	}
+
+	virtual int getNumUses() {
+		cout << "DEBUG WARNING: Objects of the Item (basic items) class don't have a number of uses." << endl;
+		return -1;
+	}
 
 	friend ostream& operator<<(ostream& osObject, Item& item)
 	{
@@ -102,3 +118,4 @@ public:
         int activeArea;
         string type;
 };
+#endif

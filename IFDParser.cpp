@@ -1,9 +1,5 @@
 #include <iostream>
-
-#ifndef H_IFDPARSER
-#define H_IFDPARSER
-  #include "IFDParser.h"
-#endif // H_IFDPARSER
+#include "IFDParser.h"
 
 
 

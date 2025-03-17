@@ -1,8 +1,7 @@
 #include <iostream>
-#ifndef H_GAME
-#define H_GAME
-  #include "Game.h"
-#endif // H_GAME
+
+#include "Game.h"
+
 
 Game::Game(){
 	map = new MapV2();
@@ -18,12 +17,20 @@ Game::Game(){
 		cout << "Creating HPSP Player" << endl;
 		player1 = new HPSPPlayer();
 	}
+    else if (playerType == "combat")
+    {
+		cout << "Creating Combat Player" << endl;
+		player1 = new CombatPlayer();
+    }
     player1->setCurrent(map->getStart());
+	player1->getCurrent()->info.userMap->setPlayerPos();
 }
 
 void Game::play(){
     string userInput;
     //cin.ignore();
+	cout << "Welcome to the game!" << endl;
+	player1->getCurrent()->info.userMap->print();
     while(true){
         //check game status
         if(player1->isGameOver() != 0){

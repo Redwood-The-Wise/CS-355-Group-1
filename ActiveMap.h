@@ -22,10 +22,11 @@
 //	objects
 // *************************************************************************
 
-#ifndef H_ITEM
-	#define H_ITEM
-	#include "Item.h"
-#endif
+#ifndef ACTIVEMAP_H
+#define ACTIVEMAP_H
+
+#include "Item.h"
+
 
 #include <vector>
 #include <iostream>
@@ -35,6 +36,7 @@ class ActiveMap
 {
 private:
 	vector<string> textMap;
+	vector<string> objectMap;
 	vector<string> userMap;
 	int playerPos[2];
 	bool checkValidMove();
@@ -48,5 +50,11 @@ public:
 	char checkMoveArea();
 	void setPlayerPos();
 	bool checkValidItem(Item*);
+	bool checkVailidEnemy(char);
+	void createObjectMap();
+	void deleteItem(char);
+	void deleteEnemy(char);
+	void dropItem(char);
 	void print();
 };
+#endif

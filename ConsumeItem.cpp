@@ -6,11 +6,17 @@
 // Description: This is the implementation file for the ConsumeItem class 
 //	that inherits from the Item class
 // *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the getEquipmentInfo method
+// *************************************************************************
 
-#ifndef H_CONSUMEITEM
-	#define H_CONSUMEITEM
-	#include "ConsumeItem.h"
-#endif
+#include "ConsumeItem.h"
+
 
 // *************************************************************************
 // The default no parameter constructor for the ConsumeItem class
@@ -20,6 +26,7 @@
 ConsumeItem::ConsumeItem()
 {
 	type = "consume";
+	numUses = 1;
 }
 
 // *************************************************************************
@@ -42,6 +49,42 @@ void ConsumeItem::setActiveMessage(string s)
 void ConsumeItem::setActiveArea(int i)
 {
 	activeArea = i;
+}
+
+// *************************************************************************
+// setNumUses sets the number of uses for the item
+// Incoming Data: int i
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the setNumUses method
+// *************************************************************************
+void ConsumeItem::setNumUses(int i)
+{
+	numUses = i;
+}
+
+// *************************************************************************
+// getNumUses returns the number of uses for the item
+// Incoming Data: none
+// Outgoing Data: int numUses
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the getNumUses method
+// *************************************************************************
+int ConsumeItem::getNumUses()
+{
+	return numUses;
 }
 
 // *************************************************************************
@@ -109,4 +152,58 @@ vector<Rule*> ConsumeItem::getItemUseRules()
 vector<Effect*> ConsumeItem::getItemConsumeEffects()
 {
 	return effects;
+}
+
+// *************************************************************************
+// getEquipmentInfo overrides the inherited virtual method from the Item
+//	class to properly return a blank Equip vector.
+// Incoming Data: none
+// Outgoing Data: vector<Equip*> blank
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the getEquipmentInfo method
+// *************************************************************************
+vector<Equip*> ConsumeItem::getEquipmentInfo() {
+	vector<Equip*> blank;
+	return blank;
+}
+
+// *************************************************************************
+// addEquipStat overrides the inherited virtual method from the Item
+//	class to send a debug message since this is only for EquipItems
+// Incoming Data: Equip* equip
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the addEquipStat method
+// *************************************************************************
+void ConsumeItem::addEquipStat(Equip* temp) {
+	cout << "DEBUG WARNING: Objects of the Item (consume items) class don't have equipment stats." << endl;
+}
+
+bool ConsumeItem::consume()
+{
+	if (numUses == -1)
+	{
+		return false;
+	}
+	if (numUses > 0)
+	{
+		numUses--;
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

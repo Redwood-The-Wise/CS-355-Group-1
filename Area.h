@@ -1,19 +1,10 @@
-#ifndef H_ITEM
-	#define H_ITEM
-	#include "Item.h"
-#endif
-#ifndef H_ULL
-	#define H_ULL
-	#include "ull.h"
-#endif
-#ifndef H_ACTIVEMAP
-    #define H_ACTIVEMAP
-    #include "ActiveMap.h"
-#endif
-#ifndef H_ENEMYNPC
-    #define H_ENEMYNPC
-    #include "EnemyNPC.h"
-#endif
+#ifndef H_AREA
+#define H_AREA
+
+#include "Item.h"
+#include "ull.h"
+#include "ActiveMap.h"
+#include "EnemyNPC.h"
 
 
 #include <string>
@@ -24,6 +15,7 @@ using namespace std;
 class Area{
   public:
     ActiveMap* userMap;
+    vector<EnemyNPC*> permenantList;
     vector<EnemyNPC*> enemies;
   	uLList<Item*> items;
     Area();
@@ -40,4 +32,6 @@ class Area{
      string description;
      bool instadeath;
      bool goal;
+	 void generateEnemies();
 };
+#endif

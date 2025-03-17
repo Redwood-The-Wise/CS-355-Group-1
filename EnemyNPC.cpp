@@ -14,10 +14,15 @@
 // Description: Implemented part of the EnemyNPC class.
 // I'm not sure if we need attack() here or if I am missing something.
 // *************************************************************************
-#ifndef H_ENEMYNPC
-#define H_ENEMYNPC
-	#include "EnemyNPC.h"
-#endif
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the updated the class to help implement the attack
+// action
+// *************************************************************************
+
+#include "EnemyNPC.h"
+
 
 
 // *************************************************************************
@@ -68,7 +73,7 @@ Stats* EnemyNPC::getStats()
 // *************************************************************************
 int EnemyNPC::attack()
 {
-
+	return stats->damage;
 }
 // *************************************************************************
 // Method to set the stats of the enemy from our file.
@@ -92,3 +97,45 @@ void EnemyNPC::setStats(Stats* s)
 	stats->name = s->name;
 	stats->defense = s->defense;
 }
+
+// *************************************************************************
+// isHit method to handle the damage dealt to the enemy
+// Incoming Data: int representing the damage dealt
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Created the method to handle the damage dealt to the enemy
+// *************************************************************************
+void EnemyNPC::isHit(int damage)
+{
+	int netDamage = damage - stats->defense;
+	if (netDamage < 0)
+	{
+		netDamage = 0;
+	}
+	stats->health -= netDamage;
+}
+
+// *************************************************************************
+// Method to get the health of the enemy
+// Incoming Data: none
+// Outgoing Data: int representing the health of the enemy
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Created the method to get the health of the enemy
+// *************************************************************************
+int EnemyNPC::getHealth()
+{
+	return stats->health;
+}
+

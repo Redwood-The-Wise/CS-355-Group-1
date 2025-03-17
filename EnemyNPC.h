@@ -15,15 +15,17 @@
 //	implemented. I'm not sure if we need attack() here or if I am missing
 // anything else.
 // *************************************************************************
-#ifndef H_STRUCTS
-	#define H_STRUCTS
-	#include "structs.h"
-#endif
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Added the updated the class to help implement the attack 
+//	action
+// *************************************************************************
 
-#ifndef COMBATPLAYER_H
-	#define COMBATPLAYER_H
-	#include "CombatPlayer.h"
-#endif // !COMBATPLAYER_H
+#ifndef H_ENEMYNPC
+#define H_ENEMYNPC
+
+#include "structs.h"
 
 
 class EnemyNPC
@@ -35,4 +37,7 @@ public:
 	Stats* getStats();
 	int attack();
 	void setStats(Stats* s);
+	void isHit(int damage);
+	int getHealth();
 };
+#endif

@@ -1,3 +1,5 @@
+#ifndef H_ULL
+#define H_ULL
 #include <iostream>
 #include <cassert>
 
@@ -296,3 +298,5 @@ private:
 	    }//end else
 	}//end copyList
 }; 
+
+#endif

@@ -6,53 +6,40 @@
 //	Item class.
 // *************************************************************************
 
-#ifndef H_MAP
-	#define H_MAP
-	#include "Map.h"
-#endif
+#ifndef H_MAPV2
+#define H_MAPV2
 
-#ifndef H_ITEM
-	#define H_ITEM
-	#include "Item.h"
-#endif
-
-#ifndef H_USEITEM
-	#define H_USEITEM
-	#include "UseItem.h"
-#endif
-
-#ifndef H_CONSUMEITEM
-	#define H_CONSUMEITEM
-	#include "ConsumeItem.h"
-#endif
-
-#ifndef H_STRUCTS
-	#define H_STRUCTS
-	#include "structs.h"
-#endif
+#include "Map.h"
+#include "Item.h"
+#include "UseItem.h"
+#include "ConsumeItem.h"
+#include "structs.h"
+#include "Equipment.h"
 
 #include <string>
+#include <vector>
 
-class MapV2: public Map
+class MapV2 : public Map
 {
-	private:
-		vector<Item*> items;
-		string playerType;
-		void makeItem();
-		void makeBasicItem();
-		void makeUseItem();
-		void makeConsumeItem();
-		void insertItems();
-		void setPlayerType();
-		
-	
-	public:
-		MapV2();
-		void buildMap();
-		void resetItems();
-		string getPlayerType();
-		void updateLinks(int x, int y, char c);
-		
-		friend ostream& operator<<(ostream& os, MapV2& map);
-		
+private:
+    std::vector<Item*> items;
+    std::string playerType;
+    void makeItem();
+    void makeBasicItem();
+    void makeUseItem();
+    void makeConsumeItem();
+    void makeEquipmentItem();
+    void insertItems();
+    void setPlayerType();
+
+public:
+    MapV2();
+    void buildMap();
+    void resetItems();
+    std::string getPlayerType();
+    void updateLinks(int x, int y, char c);
+
+    friend std::ostream& operator<<(std::ostream& os, MapV2& map);
 };
+
+#endif

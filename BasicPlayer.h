@@ -7,10 +7,11 @@
 //	inherits from Player.h
 // *************************************************************************
 
-#ifndef H_PLAYER
-	#define H_PLAYER
-	#include "Player.h"
-#endif
+#ifndef H_BASICPLAYER
+#define H_BASICPLAYER
+
+#include "Player.h"
+
 
 class BasicPlayer: public Player
 {
@@ -21,4 +22,9 @@ class BasicPlayer: public Player
 		void reportStats();
 		void consume(MapV2* mapptr);
 		void use(MapV2* mapptr);
+		void equip(MapV2* mapptr);
+		void unequip();
+		void attack();
+		void isHit(int);
 };
+#endif

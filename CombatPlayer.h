@@ -21,38 +21,35 @@
 // Date Edited: 3/14/2025
 // Edited Notes: changed attack to accept a pointer to an EnemyNPC
 // *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date Edited: 3/16/2025
+// Edited Notes: Updated the attack method to utilize ActiveMap
+// *************************************************************************
+#ifndef COMBATPLAYER_H
+#define COMBATPLAYER_H
 
-#ifndef H_PLAYER
-	#define H_HPSPPLAYER
-	#include "HPSPPlayer.h"
-#endif
-#ifndef H_EQUIPMENT
-	#define H_EQUIPMENT
-	#include "Equipment.h"
-#endif
-
-#ifndef H_ENEMYNPC
-	#define H_ENEMYNPC
-	#include "EnemyNPC.h"
-#endif
-
-#ifndef H_STRUCTS
-	#define H_STRUCTS
-	#include "structs.h"
-#endif
+#include "HPSPPlayer.h"
+#include "Equipment.h"
+#include "EnemyNPC.h"
+#include "structs.h"
 
 class CombatPlayer : public HPSPPlayer
 {
 private:
-	int armor;
 	Stats* stats;
 	vector<Equipment*> equipment;
 
 
 public:
 	CombatPlayer();
-	int attack();
-	void equip();
+	void attack();
+	void equip(MapV2*);
+	void unequip();
+	void isHit(int);
+	void setStats(Stats*);
 	Stats* getStats();
 	void reportStats();
+	void resetPlayerStats();
 };
+#endif

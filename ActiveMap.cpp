@@ -22,6 +22,7 @@
 // *************************************************************************
 
 
+
 #ifndef H_ACTIVEMAP
 	#define H_ACTIVEMAP
 	#include "ActiveMap.h"
@@ -82,9 +83,35 @@ void ActiveMap::addRow(string line)
 // *************************************************************************
 void ActiveMap::createUserMap()
 {
+	if (userMap.size() != 0)
+	{
+		userMap.clear();
+	}
+	for (int i = 0; i < objectMap.size(); i++)
+	{
+		userMap.push_back(objectMap[i]);
+	}
+}
+
+// *************************************************************************
+// createObjectMap creates a deep copy of the original textMap vector to
+//	handle Item and Enemy interaction
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/15/2025
+// Description: Created the method to create the deep copy
+// *************************************************************************
+void ActiveMap::createObjectMap()
+{
 	for (int i = 0; i < textMap.size(); i++)
 	{
-		userMap[i] = textMap[i];
+		objectMap.push_back(textMap[i]);
 	}
 }
 
@@ -103,21 +130,26 @@ void ActiveMap::createUserMap()
 // *************************************************************************
 void ActiveMap::updatePlayerPos(char dir)
 {
+	createUserMap();
 	if (dir == 'u')
 	{
-		playerPos[1] += 1;
+		playerPos[1] -= 1;
+		cout << playerPos[1] << endl;
 	}
 	else if (dir == 'd')
 	{
-		playerPos[1] -= 1;
+		playerPos[1] += 1;
+		cout << playerPos[1] << endl;
 	}
 	else if (dir == 'l')
 	{
 		playerPos[0] -= 1;
+		cout << playerPos[1] << endl;
 	}
 	else if (dir == 'r')
 	{
 		playerPos[0] += 1;
+		cout << playerPos[1] << endl;
 	}
 	else 
 	{
@@ -164,7 +196,8 @@ void ActiveMap::updatePlayerPos(char dir)
 // *************************************************************************
 bool ActiveMap::checkValidMove()
 {
-	if (userMap[playerPos[1]][playerPos[0]] == '#')
+	if (objectMap[playerPos[1]][playerPos[0]] != '*' &&
+		objectMap[playerPos[1]][playerPos[0]] != '.')
 	{
 		return false;
 	}
@@ -187,17 +220,20 @@ bool ActiveMap::checkValidMove()
 // *************************************************************************
 void ActiveMap::setPlayerPos()
 {
+	createUserMap();
 	for (int y = 0; y < userMap.size(); y++)
 	{
 		for (int x = 0; x < userMap[y].size(); x++)
 		{
 			if (userMap[y][x] == '*')
 			{
-				playerPos[x] = x;
+				playerPos[0] = x;
 				playerPos[1] = y;
 			}
 		}
 	}
+
+	userMap[playerPos[1]][playerPos[0]] = 'C';
 }
 
 // *************************************************************************
@@ -304,6 +340,129 @@ bool ActiveMap::checkValidItem(Item* item)
 }
 
 // *************************************************************************
+// checkVailidEnemy checks to see if the Player is on an Enemy character
+// Incoming Data: char enemyChar
+// Outgoing Data: bool
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/15/2025
+// Description: Created the method to handle Enemy interaction validation
+// *************************************************************************
+bool ActiveMap::checkVailidEnemy(char enemyChar)
+{
+	if (userMap[playerPos[1]][playerPos[0]] == enemyChar)
+	{
+		return true;
+	}
+	else if (userMap[playerPos[1] - 1][playerPos[0]] == enemyChar)
+	{
+		return true;
+	}
+	else if (userMap[playerPos[1] + 1][playerPos[0]] == enemyChar)
+	{
+		return true;
+	}
+	else if (userMap[playerPos[1]][playerPos[0] - 1] == enemyChar)
+	{
+		return true;
+	}
+	else if (userMap[playerPos[1]][playerPos[0] + 1] == enemyChar)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+// *************************************************************************
+// deleteItem removes the Item from the ASCII map
+// Incoming Data: char itemChar
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/15/2025
+// Description: Created the method to handle Item deletion
+// *************************************************************************
+void ActiveMap::deleteEnemy(char enemyChar)
+{
+	for (int i = 0; i < objectMap.size(); i++)
+	{
+		for (int j = 0; j < objectMap[i].size(); j++)
+		{
+			if (objectMap[i][j] == enemyChar)
+			{
+				objectMap[i][j] = '.';
+			}
+		}
+	}
+}
+
+// *************************************************************************
+// deleteItem removes the Item from the ASCII map
+// Incoming Data: char itemChar
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/15/2025
+// Description: Created the method to handle Item deletion
+// *************************************************************************
+void ActiveMap::deleteItem(char itemChar)
+{
+	if (objectMap[playerPos[1]][playerPos[0]] == itemChar)
+	{
+		objectMap[playerPos[1]][playerPos[0]] = '.';
+	}
+	else if (objectMap[playerPos[1] - 1][playerPos[0]] == itemChar)
+	{
+		objectMap[playerPos[1] - 1][playerPos[0]] = '.';
+	}
+	else if (objectMap[playerPos[1] + 1][playerPos[0]] == itemChar)
+	{
+		objectMap[playerPos[1] + 1][playerPos[0]] = '.';
+	}
+	else if (objectMap[playerPos[1]][playerPos[0] - 1] == itemChar)
+	{
+		objectMap[playerPos[1]][playerPos[0] - 1] = '.';
+	}
+	else if (objectMap[playerPos[1]][playerPos[0] + 1] == itemChar)
+	{
+		objectMap[playerPos[1]][playerPos[0] + 1] = '.';
+	}
+}
+
+// *************************************************************************
+// dropItem places the Item on the ASCII map
+// Incoming Data: char itemChar
+// Outgoing Data: void
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/15/2025
+// Description: Created the method to handle Item placement
+// *************************************************************************
+void ActiveMap::dropItem(char itemChar)
+{
+	objectMap[playerPos[1]][playerPos[0]] = itemChar;
+}
+
+// *************************************************************************
 // print outputs the string vector as the ASCII map for the user
 // Incoming Data: string line
 // Outgoing Data: none
@@ -318,8 +477,8 @@ bool ActiveMap::checkValidItem(Item* item)
 // *************************************************************************
 void ActiveMap::print()
 {
-	for (string line : userMap)
+	for (int i = 0; i < userMap.size(); i++)
 	{
-		cout << line << endl;
+		cout << userMap[i] << endl;
 	}
 }
