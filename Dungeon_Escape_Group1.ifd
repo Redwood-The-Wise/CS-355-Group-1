@@ -128,7 +128,7 @@
 	<area> 
 		%Area 6 Miniboss room
 		<desc>A dining room with an ugly looking orc staring deeply into a beatiful sword and shield set.</desc>
-		<feat>0,0</feat>
+		<feats>0,0</feats>
 		<map>############</map>
 		<map>##.........#</map>
 		<map>#.#........#</map>
