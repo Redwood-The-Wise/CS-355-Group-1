@@ -26,7 +26,8 @@
 % *************************************************************
 
 	% Area 1
-	<area> % Area 1 The starting room.
+	<area> 
+		% Area 1 The starting room.
 		<desc>Begining room</desc>
 		<feats>0,0</feats>
 		<map>#####U#####</map>
@@ -73,7 +74,8 @@
 		</enemy>
 	</area>
 
-	<area> %area 4 second room with one monster and upgraded sword
+	<area> 
+		%area 4 second room with one monster and upgraded sword
 		<desc>Seems to be a maze of a hall way.  I wonder what it leads to.</desc>
 		<feats>0,0</feats>
 		<map>##########</map>
@@ -91,8 +93,9 @@
 		</enemy>
 	</area>
 
-	<area> %area 5 main hall, has 3 enemies that are one hit kills if your weapons are fully upgraded.
-			%There are healing potions behind each enemy that are needed to beat the bosses.
+	<area> 
+		%area 5 main hall, has 3 enemies that are one hit kills if your weapons are fully upgraded.
+		%There are healing potions behind each enemy that are needed to beat the bosses.
 		<desc>It looks like it used to be a grand hall. Now it looks like creepy room with 3 pillars.</desc>
 		<feats>0,0</feats>
 		<map>############U############</map>
@@ -122,7 +125,8 @@
 		</enemy>
 	</area>
 
-	<area> %Area 6 Miniboss room
+	<area> 
+		%Area 6 Miniboss room
 		<desc>A dining room with an ugly looking orc staring deeply into a beatiful sword and shield set.</desc>
 		<feat>0,0</feat>
 		<map>############</map>
@@ -142,7 +146,8 @@
 		</enemy>
 	</area>
 
-	<area> %area 7 an empty room for a break, maybe make it a die if you don't kill miniboss first room?
+	<area> 
+		%area 7 an empty room for a break, maybe make it a die if you don't kill miniboss first room?
 		<desc>Its empty and quiet, a nice place for a nap or morning coffee.</desc>
 		<feats>0,0<feats>
 		<map>#########</map>
@@ -152,7 +157,8 @@
 		<map>####D####</map>
 	</area>
 
-	<area> %area 8 Main Boss battle, Dragon
+	<area> 
+		%area 8 Main Boss battle, Dragon
 		<desc>You see the door way out as light shines through it.  A large red and gold dragon steps infront of it.  It says "You will not leave here with my treasures.  You're more than welcome to stay until I'm hungry but I will eat you if you try to leave.  It then starts picking charred meat out of its teeth with a sharpened femur.</desc>
 		<feats>0,0</feats>
 		<map>##########</map>
@@ -170,7 +176,8 @@
 		</enemy>
 	</area>
 
-	<area> % Open field, you have now escaped.
+	<area> 
+		% Open field, you have now escaped.
 		<desc>An open field with fresh air.  You've collected several of the dragons scales.  What new adventures await.</desc>
 		<feats>0,1</feats>
 		<map>..............</map>
