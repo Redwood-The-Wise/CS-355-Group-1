@@ -75,7 +75,7 @@
 	</area>
 
 	<area> 
-		%area 4 second room with one monster and upgraded sword
+%area 4 second room with one monster and upgraded sword
 		<desc>Seems to be a maze of a hall way.  I wonder what it leads to.</desc>
 		<feats>0,0</feats>
 		<map>##########</map>
@@ -149,7 +149,7 @@
 	<area> 
 		%area 7 an empty room for a break, maybe make it a die if you don't kill miniboss first room?
 		<desc>Its empty and quiet, a nice place for a nap or morning coffee.</desc>
-		<feats>0,0<feats>
+		<feats>0,0</feats>
 		<map>#########</map>
 		<map>#.......#</map>
 		<map>#.......#</map>
@@ -198,16 +198,16 @@
 % *************************************************************
 
 	<links>
-		<linkset>2,1,1,1</linkset> %1 Starting room
-		<linkset>2,1,3,2</linkset> %2 Hallway
-		<linkset>3,3,3,2</linkset> %3 First combat room
-		<linkset>4,4,2,4</linkset> %4 Second combat room with maze
-		<linkset>5,2,6,8</linkset> %5 Grand Hallway
-		<linkset>6,6,6,5</linkset> %6 Miniboss room
-		<linkset>7,5,7,7</linkset> %7 Empty room thats locked with key
-		<linkset>8,8,5,9</linkset> %8 Main boss room
-		<linkset>9,9,8,9</linkset> %9 Open field
-	</link>
+		<linkset>2,1,1,1</linkset> 
+		<linkset>5,1,3,4</linkset> 
+		<linkset>3,3,3,2</linkset>
+		<linkset>4,4,2,4</linkset>
+		<linkset>5,2,6,8</linkset>
+		<linkset>6,6,6,5</linkset>
+		<linkset>7,5,7,7</linkset>
+		<linkset>8,8,5,9</linkset>
+		<linkset>9,9,8,9</linkset>
+	</links>
 
 % *************************************************************
 % Name: Nick Germann
@@ -224,9 +224,9 @@
 			<star>1</star>
 			<code>s</code>
 			<stat>0,1</stat>
-			<stat>1,3</stats>
-			<actar>0</stats>
-			<actmess>Plus 3 attack, plus 1 defense<actmess>
+			<stat>1,3</stat>
+			<actar>0</actar>
+			<actmess>Plus 3 attack, plus 1 defense</actmess>
 		</equipment>
 	</item>
 
@@ -260,7 +260,8 @@
 			<name>Bronze Sword</name>
 			<desc>Shimmers of dark gold, a much better choice than the toy.</desc>
 			<star>4</star>
-			<stat>2,7</stat>
+			<stat>0,2</stat>
+			<stat>1,7</stat>
 			<actar>0</actar>
 			<actmess>swoosh</actmess>
 		</equipment>

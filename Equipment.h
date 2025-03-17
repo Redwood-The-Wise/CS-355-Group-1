@@ -44,7 +44,7 @@ class Equipment : public Item
         void addRule(Rule* temp);
         vector<Rule*> getItemUseRules();
         void addEffect(Effect* temp);
-        vector<Effect*> getItemConsumeEffects();
+        vector<Effect*> getItemConsumeEffects(bool&);
 		vector<Equip*> getEquipmentInfo();
 		void addEquipStat(Equip* temp);
 

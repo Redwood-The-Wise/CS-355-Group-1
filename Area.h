@@ -27,11 +27,11 @@ class Area{
     bool getGoal();
     void displayArea();
     void search();
+	void generateEnemies();
   private:
 
      string description;
      bool instadeath;
      bool goal;
-	 void generateEnemies();
 };
 #endif

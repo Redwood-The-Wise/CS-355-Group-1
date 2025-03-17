@@ -35,7 +35,7 @@ class UseItem: public Item
 		string getActiveMessage();
 		int getActiveArea();
 		vector<Rule*> getItemUseRules();
-		vector<Effect*> getItemConsumeEffects();
+		vector<Effect*> getItemConsumeEffects(bool&);
 		vector<Equip*> getEquipmentInfo();
 };
 

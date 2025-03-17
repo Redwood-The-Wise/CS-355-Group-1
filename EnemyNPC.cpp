@@ -38,7 +38,10 @@
 // Date: 3/13/2025
 // Description: Created the constructor but am not sure if it needs to be used.
 // *************************************************************************
-EnemyNPC::EnemyNPC(){}
+EnemyNPC::EnemyNPC()
+{
+	stats = new Stats;
+}
 
 // *************************************************************************
 // Method returns the stats of the enemy
@@ -139,3 +142,22 @@ int EnemyNPC::getHealth()
 	return stats->health;
 }
 
+// *************************************************************************
+// Method to display the enemy
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Created the method to display the enemy
+// *************************************************************************
+void EnemyNPC::displayEnemy()
+{
+	cout << "Name: " << stats->name << endl;
+	cout << "Description: " << stats->desc << endl;
+	cout << "Map Character: " << stats->mapChar << endl;
+}

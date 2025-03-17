@@ -15,6 +15,7 @@ void Map::buildMap(){
     nextToken = parser.getNext();
 
     if(nextToken == "<game>"){
+		cout << nextToken << endl;
         parser.eatToken();
         nextToken = parser.getNext();
         while(nextToken != "</game>"){  //consider what happens when run out of tokens && not error state
@@ -70,7 +71,7 @@ void Map::makeArea(){
     areaNode* tempNodePtr = new areaNode;
 	tempNodePtr->info.userMap = new ActiveMap();
 
-    while(nextToken != "</area>"){
+    while(nextToken != "</area>"){ 
         if(nextToken == "<desc>"){
             parser.eatToken();
             nextToken = parser.getNext();
@@ -79,7 +80,6 @@ void Map::makeArea(){
         else if(nextToken == "<feats>"){
             parser.eatToken();
             nextToken = parser.getNext();
-
             istringstream ss(nextToken);
             getline(ss, xstr, ',');
             tempNodePtr->info.setID(atoi(xstr.c_str()));
@@ -99,7 +99,8 @@ void Map::makeArea(){
 			nextToken = parser.getNext();
 			tempNodePtr->info.permenantList.push_back(makeEnemy());
         }
-        else if(nextToken == "</desc>" || nextToken == "</feats>" || nextToken == "</map>") {
+        else if(nextToken == "</desc>" || nextToken == "</feats>" ||
+            nextToken == "</map>" || nextToken == "</enemy>") {
             //do nothing
         }
         else{
@@ -288,5 +289,6 @@ EnemyNPC* Map::makeEnemy()
 		parser.eatToken();
 		nextToken = parser.getNext();
     }
+	tempEnemy->setStats(tempStats);
 	return tempEnemy;
 }

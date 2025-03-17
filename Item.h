@@ -79,7 +79,7 @@ public:
 	virtual void addEffect(Effect* temp){
 		cout<<"DEBUG WARNING: Objects of the Item (basic items) class don't have associated effects."<<endl;
 	}
-    virtual vector<Effect*> getItemConsumeEffects(){
+    virtual vector<Effect*> getItemConsumeEffects(bool& remove){
 		//shouldn't ever call this method directly
         vector<Effect*> blank;
 		return blank;

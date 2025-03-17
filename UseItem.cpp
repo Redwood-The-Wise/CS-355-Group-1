@@ -111,7 +111,7 @@ vector<Rule*> UseItem::getItemUseRules()
 // Incoming Data: none
 // Outgoing Data: vector<Effect*> blank
 // *************************************************************************
-vector<Effect*> UseItem::getItemConsumeEffects()
+vector<Effect*> UseItem::getItemConsumeEffects(bool& remove)
 {
 	vector<Effect*> blank;
 	return blank;

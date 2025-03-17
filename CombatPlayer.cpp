@@ -26,6 +26,7 @@
 CombatPlayer::CombatPlayer()
 {
 	stats = new Stats;
+	hitPoints = 100;
 	stats->damage = 10;
 	stats->defense = 0;
 }
@@ -129,9 +130,9 @@ void CombatPlayer::equip(MapV2* mapptr)
 		return;
 	}
 
-	if (item->getType() != "equip")
+	if (item->getType() != "Equipment")
 	{
-		cout << itemName << " equip." << endl;
+		cout << itemName << " cannot be equipped." << endl;
 		return;
 	}
 
@@ -142,7 +143,6 @@ void CombatPlayer::equip(MapV2* mapptr)
 	if (item->getActiveArea() != 0
 		&& itemArea != mapArea)
 	{
-		cout << itemName << " cannot be consumed in this location." << endl;
 		return;
 	}
 
@@ -153,6 +153,7 @@ void CombatPlayer::equip(MapV2* mapptr)
 	for (int i = 0; i < equip.size(); i++)
 	{
 		Equip* stat = equip[i];
+		cout << "Rule: " << stat->rule << " Effect: " << stat->effect << endl;
 		if (stat->rule == 0)
 		{
 			stats->defense += stat->effect;
@@ -301,11 +302,23 @@ Stats* CombatPlayer::getStats()
 void CombatPlayer::reportStats()
 {
     cout << "Player stats:\n"
-         << "\tHit Points:" << stats->health
-         <<  "\n\tDamage:" << stats->damage
-         << "\n\tDefense" << stats->defense << endl;
+         << "\tHit Points: " << hitPoints
+         <<  "\n\tDamage: " << stats->damage
+         << "\n\tDefense: " << stats->defense << endl;
 }
 
+// *************************************************************************
+// Method to reset the player stats.
+// Incoming Data: none
+// Outgoing Data: none
+// *************************************************************************
+// *************************************************************************
+// Edit Log
+// *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Created the resetPlayerStats method
 void CombatPlayer::resetPlayerStats()
 {
 	HPSPPlayer:resetPlayerStats();

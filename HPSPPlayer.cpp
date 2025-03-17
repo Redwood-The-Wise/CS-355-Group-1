@@ -115,8 +115,8 @@ void HPSPPlayer::consume(MapV2* mapptr)
 	}
 
 	cout << item->getActiveMessage() << endl;
-
-	vector<Effect*> effects = item->getItemConsumeEffects();
+	bool remove;
+	vector<Effect*> effects = item->getItemConsumeEffects(remove);
 
 	for (int i = 0; i < effects.size(); i++)
 	{
@@ -137,6 +137,10 @@ void HPSPPlayer::consume(MapV2* mapptr)
 		{
 			sanityPoints += effect->effectAmt;
 		}
+	}
+	if (remove)
+	{
+		items.deleteNode(item);
 	}
 }
 

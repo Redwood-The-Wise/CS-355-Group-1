@@ -53,6 +53,11 @@ Equipment::Equipment()
 // Description: Created the Display information method
 // coordinates
 // *************************************************************************
+// *************************************************************************
+// Name: Daniel Puckett
+// Date: 3/16/2025
+// Description: Updated the display information method to include the stats
+// *************************************************************************
 void Equipment::displayEquipmentInfo()
 {
 	for (Equip* stat : stats)
@@ -222,7 +227,7 @@ void Equipment::addEffect(Effect* temp)
 // Date: 3/10/2025
 // Description: Created the get Effect override method for Equipment
 // *************************************************************************
-vector<Effect*> Equipment::getItemConsumeEffects()
+vector<Effect*> Equipment::getItemConsumeEffects(bool& remove)
 {
     cout << "DEBUG: Equipment doesn't have associated consume effects." << endl;
     return vector<Effect*>();

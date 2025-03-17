@@ -149,8 +149,9 @@ vector<Rule*> ConsumeItem::getItemUseRules()
 // Incoming Data: none
 // Outgoing Data: vector<Effect*> effects
 // *************************************************************************
-vector<Effect*> ConsumeItem::getItemConsumeEffects()
+vector<Effect*> ConsumeItem::getItemConsumeEffects(bool& remove)
 {
+	remove = consume();
 	return effects;
 }
 

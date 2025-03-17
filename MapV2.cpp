@@ -149,7 +149,8 @@ void MapV2::makeUseItem()
 		else if (nextToken == "<actar>")
 		{
 			parser.eatToken();
-			xstr = parser.getNext();
+			nextToken = parser.getNext();
+			xstr = nextToken;
 			int temp = atoi(xstr.c_str());
 			tempItem->setActiveArea(temp);
 		}
@@ -176,9 +177,17 @@ void MapV2::makeUseItem()
 			char temp = xstr[0];
 			tempItem->setItemChar(temp);
 		}
+		else if (nextToken == "</name>" || nextToken == "</desc>" ||
+			nextToken == "</star>" || nextToken == "</actmess>" ||
+			nextToken == "</actar>" || nextToken == "</rule>" ||
+			nextToken == "</code>")
+		{
+			// do nothing
+		}
 		else
 		{
 			cout << "Error parsing in makeUseItem()" << endl;
+			cout << nextToken << endl;
 		}
 		
 		parser.eatToken();
@@ -266,6 +275,7 @@ void MapV2::makeConsumeItem()
 		else
 		{
 			cout << "Error parsing in makeConsumeItem()" << endl;
+			cout << nextToken << endl;
 		}
 		parser.eatToken();
 		nextToken = parser.getNext();
@@ -362,6 +372,7 @@ void MapV2::makeEquipmentItem()
 		else
 		{
 			cout << "Error parsing in makeEquipmentItem()" << endl;
+			cout << nextToken << endl;
 		}
 		parser.eatToken();
 		nextToken = parser.getNext();
@@ -388,9 +399,9 @@ void MapV2::insertItems()
 
 		tempItemPtr = items[currentIndex];
 
-		while (tempItemPtr->getSR() == i)
+		while (tempItemPtr->getSR() == i + 1)
 		{	
-			areasVec[i-1]->info.items.insertLast(tempItemPtr);
+			areasVec[i]->info.items.insertLast(tempItemPtr);
 			currentIndex++;
 			if (currentIndex < items.size())
 			{
@@ -503,6 +514,10 @@ void MapV2::buildMap()
     //link up areas
     linkLinks();
     insertItems();
+	for (int i = 0; i < areasVec.size(); i++)
+	{
+		areasVec[i]->info.generateEnemies();
+	}
 }
 
 // *************************************************************************
@@ -517,6 +532,11 @@ void MapV2::resetItems()
 		areasVec[i]->info.items.destroyList();
 	}
 	insertItems();
+	for (int i = 0; i < areasVec.size(); i++)
+	{
+		areasVec[i]->info.generateEnemies();
+		areasVec[i]->info.userMap->createObjectMap();
+	}
 }
 
 // *************************************************************************

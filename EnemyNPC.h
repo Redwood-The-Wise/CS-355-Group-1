@@ -26,7 +26,7 @@
 #define H_ENEMYNPC
 
 #include "structs.h"
-
+#include <iostream>
 
 class EnemyNPC
 {
@@ -39,5 +39,6 @@ public:
 	void setStats(Stats* s);
 	void isHit(int damage);
 	int getHealth();
+	void displayEnemy();
 };
 #endif

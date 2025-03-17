@@ -175,7 +175,6 @@ void ActiveMap::updatePlayerPos(char dir)
 			playerPos[0] += 1;
 		}
 		cout << "You cannot move there" << endl;
-		return;
 	}
 	overrideChar();
 }
@@ -197,7 +196,11 @@ void ActiveMap::updatePlayerPos(char dir)
 bool ActiveMap::checkValidMove()
 {
 	if (objectMap[playerPos[1]][playerPos[0]] != '*' &&
-		objectMap[playerPos[1]][playerPos[0]] != '.')
+		objectMap[playerPos[1]][playerPos[0]] != '.' &&
+		objectMap[playerPos[1]][playerPos[0]] != 'U' &&
+		objectMap[playerPos[1]][playerPos[0]] != 'D' &&
+		objectMap[playerPos[1]][playerPos[0]] != 'L' &&
+		objectMap[playerPos[1]][playerPos[0]] != 'R')
 	{
 		return false;
 	}
@@ -274,19 +277,19 @@ void ActiveMap::overrideChar()
 // *************************************************************************
 char ActiveMap::checkMoveArea()
 {
-	if (userMap[playerPos[1]][playerPos[0]] == 'u')
+	if (objectMap[playerPos[1]][playerPos[0]] == 'U')
 	{
 		return 'u';
 	}
-	else if (userMap[playerPos[1]][playerPos[0]] == 'd')
+	else if (objectMap[playerPos[1]][playerPos[0]] == 'D')
 	{
 		return 'd';
 	}
-	else if (userMap[playerPos[1]][playerPos[0]] == 'l')
+	else if (objectMap[playerPos[1]][playerPos[0]] == 'L')
 	{
 		return 'l';
 	}
-	else if (userMap[playerPos[1]][playerPos[0]] == 'r')
+	else if (objectMap[playerPos[1]][playerPos[0]] == 'R')
 	{
 		return 'r';
 	}

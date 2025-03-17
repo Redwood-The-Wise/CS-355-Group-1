@@ -110,6 +110,18 @@ void Game::play(){
 		{
 			player1->consume(map);
 		}
+        else if (userInput == "attack")
+        {
+			player1->attack();
+        }
+        else if (userInput == "equip")
+        {
+            player1->equip(map);
+        }
+		else if (userInput == "unequip")
+		{
+			player1->unequip();
+		}
         else if(userInput == "help"){
             cout<<"You may type: "<<endl;
             cout<<"\t u, d, l, or r: to move up, down, left or right on the map,"<<endl;
@@ -188,5 +200,5 @@ void Game::moveArea()
     if (playerMoved) {
         player1->getCurrent()->info.userMap->setPlayerPos();
     }
-    
+	cout << playerMoved << endl;
 }

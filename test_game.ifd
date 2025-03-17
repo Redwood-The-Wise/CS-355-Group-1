@@ -55,10 +55,10 @@
 		<desc>A room lit with torches. A precarious gargoyle pirched in front of potion</desc>
 		<feats>0,0</feats>
 		<map>##########</map>
-		<map>#i.g.....#</map>
+		<map>#p.g.....#</map>
 		<map>####.....#</map>
 		<map>#.......*R</map>
-		<map>#i.......#</map>
+		<map>#s.......#</map>
 		<map>##########</map>
 		
 		<enemy>
@@ -75,7 +75,7 @@
 				<desc>light weight but seems like it can take a hit</desc>
 				<star>3</star>
 				<code>s</code>
-				<stat>3,1</stat>
+				<stat>0,3<\stat>
 				<actar>0</actar>
 				<actmess>thunk</actmess>
 			</equipment>

@@ -37,18 +37,33 @@ void Area::displayArea(){
 // *************************************************************************
 void Area::search()
 {
-	if (items.isEmptyList()) 
+	if (!items.isEmptyList()) 
 	{
-		cout << "No items are in this area." << endl;
-		return;
+		nodeType<Item*>* ptr = items.getFirst();
+		while (ptr != NULL)
+		{
+			ptr->info->displayName();
+			cout << "Map Character: " << ptr->info->getItemChar() << endl;
+			ptr = ptr->link;
+		}
+	}
+	else
+	{
+		cout << "No items in this area." << endl;
+	}
+	if (enemies.size() != 0)
+	{
+		for (EnemyNPC* enemy : enemies)
+		{
+			enemy->displayEnemy();
+		}
+	}
+	else
+	{
+		cout << "No enemies in this area." << endl;
+
 	}
 	
-	nodeType<Item*>* ptr = items.getFirst();
-	while (ptr != NULL)
-	{
-		ptr->info->displayName();
-		ptr = ptr->link;
-	}
 }
 
 // *************************************************************************
@@ -61,6 +76,6 @@ void Area::generateEnemies()
 {
 	for (int i = 0; i < permenantList.size(); i++)
 	{
-		enemies[i] = permenantList[i];
+		enemies.push_back(permenantList[i]);
 	}
 }
