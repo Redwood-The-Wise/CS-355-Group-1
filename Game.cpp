@@ -125,6 +125,8 @@ void Game::play(){
         else if(userInput == "help"){
             cout<<"You may type: "<<endl;
             cout<<"\t u, d, l, or r: to move up, down, left or right on the map,"<<endl;
+			cout << "\t inventory: to display items in your inventory," << endl;
+			cout << "\t attack: to attack an enemy," << endl;
             cout<<"\t search: to search for items in current area,"<<endl;
             cout<<"\t take: to attempt to take an item,"<<endl;
             cout<<"\t leave: to attempt to leave an item,"<<endl;
@@ -132,6 +134,8 @@ void Game::play(){
             cout<<"\t stats: to display health points and sanity points,"<< endl;
             cout<<"\t use: to use an item in your inventory,"<<endl;
             cout<<"\t consume: to consume an item in your inventory,"<<endl;
+			cout << "\t equip: to equip an item in your inventory," << endl;
+			cout << "\t unequip: to unequip an item in your inventory," << endl;
             cout<<"\t reset: to reset the game,"<<endl;
             cout<<"\t exit: to exit the game."<<endl;
             cout<<endl;

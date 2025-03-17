@@ -263,11 +263,11 @@ EnemyNPC* Map::makeEnemy()
 			parser.eatToken();
 			nextToken = parser.getNext();
 			xstr = nextToken;
-			tempStats->health = atoi(xstr.substr(0, xstr.find(',')).c_str());
+			tempStats->damage = atoi(xstr.substr(0, xstr.find(',')).c_str());
 			xstr = xstr.substr(xstr.find(',') + 1);
 			tempStats->defense = atoi(xstr.substr(0, xstr.find(',')).c_str());
 			xstr = xstr.substr(xstr.find(',') + 1);
-			tempStats->damage = atoi(xstr.c_str());
+			tempStats->health = atoi(xstr.c_str());
         }
         else if (nextToken == "<code>")
         {
